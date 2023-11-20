@@ -114,6 +114,7 @@ submitButton.addEventListener("click", ()=> {
 		
 		const reloadButton = document.createElement("button");
 		reloadButton.textContent = "Try again!";
+		reloadButton.classList.add("reload-button")
 		quizContainer.appendChild(reloadButton);
 		reloadButton.addEventListener("click", ()=> {
 			window.location.reload();

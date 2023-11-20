@@ -70,6 +70,24 @@ button:hover {
 	background: #8e8d8d;
 }
 
+.reload-button {
+	transition: 200ms;
+}
+.reload-button:hover {
+	transform: scale(1.1);
+}
+
+.credit {
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 0.6rem;
+	color: lightgrey;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
 @media screen and (max-width: 500px) {
 	.card {
 		width: 95%;	

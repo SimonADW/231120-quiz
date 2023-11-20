@@ -26,8 +26,16 @@ main {
 	font-size: 1.5rem;
 	color: white;
 	backdrop-filter: blur(7px);
-	background-color: rgba(0,0,0, 0.7)
+	background-color: rgba(0,0,0, 0.7);
+	border-radius: 15px;
+	overflow: hidden;
 }
+
+input {
+	transform: scale(1.4);
+	margin-right: 0.5rem;
+}
+
 .card-content {
 	padding: 4rem;
 }
@@ -56,3 +64,9 @@ button:hover {
 	background: #8e8d8d;
 }
 
+@media screen and (max-width: 500px) {
+	.card {
+		width: 95%;	
+		height: 70%;	
+	}
+}

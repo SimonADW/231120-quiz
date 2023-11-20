@@ -80,7 +80,6 @@ const handleQuiz = () => {
 	optionD.textContent = activeIndex.optionD;
 } 
 
-
 const getAnswer = ()=> {
 	let answer;
 	quizOptions.forEach((option)=> {
@@ -90,9 +89,6 @@ const getAnswer = ()=> {
 	});
 	return answer;
 }
-
-
-handleQuiz();
 
 submitButton.addEventListener("click", ()=> {
 	const selectedAnswer = getAnswer();
@@ -109,6 +105,7 @@ submitButton.addEventListener("click", ()=> {
 	if(currentIndex < quizQuestions.length) {
 		handleQuiz();
 	} else {
+		// Display score and reset button
 		quizContainer.textContent = "";
 
 		const scoreMessage = document.createElement("h3");
@@ -124,8 +121,11 @@ submitButton.addEventListener("click", ()=> {
 	};
 });
 
+// Remove errorMessage on radio-change
 quizOptions.forEach(option => {
 	option.addEventListener("change", ()=> {
 		errorMessage.style.display = "none";
 	})
 })
+
+handleQuiz();

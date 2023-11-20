@@ -66,11 +66,12 @@ let currentScore = 0;
 
 const deselectOption = () => {
 	quizOptions.forEach((option)=>{
-		option.checked = "false";
+		option.checked = false;
 	});
 };
 
 const handleQuiz = () => {
+	deselectOption();
 	const activeIndex = quizQuestions[currentIndex];
 	questionText.textContent = activeIndex.question;
 	optionA.textContent = activeIndex.optionA;
@@ -89,6 +90,8 @@ const getAnswer = ()=> {
 	});
 	return answer;
 }
+
+
 handleQuiz();
 
 submitButton.addEventListener("click", ()=> {
@@ -97,6 +100,7 @@ submitButton.addEventListener("click", ()=> {
 		errorMessage.style.display = "block";
 		return;
 	} 
+	
 	if(selectedAnswer === quizQuestions[currentIndex].correctAnswer) {
 		currentScore++;
 	}
@@ -106,14 +110,22 @@ submitButton.addEventListener("click", ()=> {
 		handleQuiz();
 	} else {
 		quizContainer.textContent = "";
-		const finaleScore = document.createElement("h3");
-		finaleScore.textContent = `Final score is ${finaleScore} of ${quizQuestions.length}`;
+
+		const scoreMessage = document.createElement("h3");
+		scoreMessage.textContent = `Final score is ${currentScore} of ${quizQuestions.length}`;
+		quizContainer.appendChild(scoreMessage);
+		
 		const reloadButton = document.createElement("button");
 		reloadButton.textContent = "Try again!";
+		quizContainer.appendChild(reloadButton);
 		reloadButton.addEventListener("click", ()=> {
 			window.location.reload();
-		})
-	}
-	deselectOption();
-	
+		});		
+	};
 });
+
+quizOptions.forEach(option => {
+	option.addEventListener("change", ()=> {
+		errorMessage.style.display = "none";
+	})
+})
